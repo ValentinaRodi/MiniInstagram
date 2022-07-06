@@ -97,8 +97,9 @@ export function commentDelete(id) {
   }
 }
 
-export function commentUpdate() {
+export function commentUpdate(text, id) {
   return {
     type: COMMENT_UPDATE,
+    data: { text, id },
   }
 }

@@ -7,7 +7,7 @@ import uniqid from 'uniqid'
 
 const Comments = (props) => {
   const [, updateState] = useState()
-  const commentUpdate = useCallback(() => updateState({}), [])
+  const commentDel = useCallback(() => updateState({}), [])
   
   const [textComment, setTextComment] = useState('')
   const comments = useSelector((state) => {
@@ -28,19 +28,18 @@ const Comments = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const id = uniqid()
-
     dispatch(commentCreate(textComment, id))
   }
 
   return (
     <div className="card-comments">
-      <form onSubmit={handleSubmit}  className="comments-item-create">
+      <form onSubmit={handleSubmit} name={uniqid()} className="comments-item-create">
         <input type="text" value={textComment} onChange={handleInput} />
         <input type="submit" hidden />
       </form>
       {!!comments.length &&
         comments.map((comment) => {
-          return <SingleComment commentUpdate={commentUpdate} key={comment.id} data={comment} />
+          return <SingleComment  commentDel={commentDel} name={uniqid()} data={comment} />
         })}
     </div>
   )
