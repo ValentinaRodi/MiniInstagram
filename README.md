@@ -16,7 +16,9 @@
 
 • React
 
-• React Redux
+• React Redux-Thunk
+
+• Axios
 
 • Node.js
 
